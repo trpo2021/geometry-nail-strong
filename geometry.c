@@ -1,5 +1,4 @@
 #include <ctype.h>
-#include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -93,7 +92,7 @@ bool finding_comma(char *UKAZATEL)
         float S;
         float P;
         P = 2 * pi * Z[2];
-        S = pi * pow(Z[2], 2);
+        S = pi * Z[2]*Z[2];
         printf("P = %f\n", P);
         printf("S = %f\n", S);
     }
