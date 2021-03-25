@@ -1,2 +1,6 @@
-double takePerimetr(string figureName, vector<double> points);
-double takeSquare(string figureName, vector<double> points);
+#include <ctype.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+void calculation(double *Z)
