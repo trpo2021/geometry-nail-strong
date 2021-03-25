@@ -1,14 +1,14 @@
 main: main.o input.o calculate.o
 	gсс main.o input.o calculate.o -o geometry.exe
 
-main.o: main.cpp
-	gсс -c main.cpp
+main.o: main.c
+	gсс -c main.c
 
-input.o: input.cpp
-	gсс -c input.cpp
+input.o: input.c
+	gсс -c input.c
 
-calculate.o: calculate.cpp
-	gсс -c calculate.cpp
+calculate.o: calculate.c
+	gсс -c calculate.c
 
 clean:
 	rm -rf *.o main
