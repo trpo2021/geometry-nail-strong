@@ -11,7 +11,7 @@ calculate.o: calculate.c
 	gсс -c calculate.c
 
 translation_universal.o: translation_universal.c
-gcc -c translation_universal.c
+  gcc -c translation_universal.c
 
 clean:
 	rm -rf *.o main
