@@ -11,7 +11,7 @@ translation_universal.o: translation_universal.c
 	gcc -c translation_universal.c
 
 calculate.o: calculate.c
-		gcc -c calculate.c
+  gcc -c calculate.c
 
 clean:
 	rm -rf *.o geometry
