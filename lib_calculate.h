@@ -4,4 +4,4 @@
 #include <stdlib.h>
 #include <string.h>
 #pragma once
-void calculation(double *Z)
+void calculation(double*);

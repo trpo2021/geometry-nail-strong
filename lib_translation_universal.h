@@ -4,4 +4,4 @@
 #include <stdlib.h>
 #include <string.h>
 #pragma once
-void translation_universal(char *UKAZATEL, double *x1)
+void translation_universal(char*, double*);

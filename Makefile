@@ -1,17 +1,17 @@
-main: main.o input.o calculate.o
-	gсс main.o input.o calculate.o translation_universal.o -lm -o geometry.exe
+geometry: main.o input.o calculate.o
+	gcc main.o input.o calculate.o translation_universal.o -lm -o geometry.exe
 
 main.o: main.c
-	gсс -c main.c
+	gcc -c main.c
 
 input.o: input.c
-	gсс -c input.c
-
-calculate.o: calculate.c
-	gсс -c calculate.c
+	gcc -c input.c
 
 translation_universal.o: translation_universal.c
   gcc -c translation_universal.c
 
+calculate.o: calculate.c
+		gcc -c calculate.c
+
 clean:
-	rm -rf *.o main
+	rm -rf *.o geometry

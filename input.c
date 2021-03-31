@@ -1,5 +1,32 @@
 #include "lib_input.h"
-bool finding_comma(char *UKAZATEL)
+
+bool finding_comma(char*);
+bool finding_bracket(char*);
+bool finding_bracket2(char*);
+bool correct(char*, char*, int);
+
+bool correct(char* Circle, char* UKAZATEL, int Q)
+{
+    int w = 6, check = 0;
+    if (strncmp(Circle, UKAZATEL, w) == 0) {
+        check++;
+        if (finding_bracket(UKAZATEL) == true)
+            check++;
+        if (finding_comma(UKAZATEL) == true)
+            check++;
+        if (finding_bracket2(UKAZATEL) == true)
+            check++;
+    } else {
+        printf("error: Check the spelling of the command\n");
+    }
+    if (check == 4)
+        return true;
+    if (check != 4)
+        return false;
+    return true;
+}
+
+bool finding_comma(char* UKAZATEL)
 {
     int flag = 0;
     while (*UKAZATEL != 10) {
@@ -13,51 +40,31 @@ bool finding_comma(char *UKAZATEL)
         return false;
     return true;
 }
-    bool finding_bracket(char *UKAZATEL)
-    {
-        int flag = 0;
-        while (*UKAZATEL != 10) {
-            if (*UKAZATEL == '(') {
-                flag = 1;
-                break;
-            }
-            UKAZATEL++;
+bool finding_bracket(char* UKAZATEL)
+{
+    int flag = 0;
+    while (*UKAZATEL != 10) {
+        if (*UKAZATEL == '(') {
+            flag = 1;
+            break;
         }
-        if (flag == 0)
-            return false;
-        return true;
+        UKAZATEL++;
     }
-    bool finding_bracket2(char *UKAZATEL)
-    {
-        int flag = 0;
-        while (*UKAZATEL != 10) {
-            if (*UKAZATEL == ')') {
-                flag = 1;
-                break;
-            }
-            UKAZATEL++;
+    if (flag == 0)
+        return false;
+    return true;
+}
+bool finding_bracket2(char* UKAZATEL)
+{
+    int flag = 0;
+    while (*UKAZATEL != 10) {
+        if (*UKAZATEL == ')') {
+            flag = 1;
+            break;
         }
-        if (flag == 0)
-            return false;
-        return true;
+        UKAZATEL++;
     }
-    bool correct(char* Circle, char *UKAZATEL, int Z)
-    {
-        int w = 6, check = 0;
-        if (strncmp(Circle, UKAZATEL, w) == 0) {
-            check++;
-            if (finding_bracket(UKAZATEL) == true)
-                check++;
-            if (finding_comma(UKAZATEL) == true)
-                check++;
-            if (finding_bracket2(UKAZATEL) == true)
-                check++;
-        } else {
-            printf("error: Check the spelling of the command");
-        }
-        if (check == 4)
-            return true;
-        if (check != 4)
-            return false;
-        return true;
-    }
+    if (flag == 0)
+        return false;
+    return true;
+}
