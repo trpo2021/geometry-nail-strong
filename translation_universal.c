@@ -1,4 +1,4 @@
-#include "lib_transation_universal.h"
+#include "lib_translation_universal.h"
 void translation_universal(char *UKAZATEL, double *x1)
 {
     char *point;
