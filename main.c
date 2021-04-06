@@ -1,7 +1,6 @@
 #include "lib_calculate.h"
 #include "lib_input.h"
 #include "lib_translation_universal.h"
-#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>

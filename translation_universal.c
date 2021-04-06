@@ -1,5 +1,4 @@
 #include "lib_translation_universal.h"
-#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
