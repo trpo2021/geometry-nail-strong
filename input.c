@@ -1,5 +1,9 @@
 #include "lib_input.h"
-
+#include <ctype.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 bool finding_comma(char*);
 bool finding_bracket(char*);
 bool finding_bracket2(char*);

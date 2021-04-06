@@ -1,4 +1,9 @@
 #include "lib_translation_universal.h"
+#include <ctype.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 void translation_universal(char *UKAZATEL, double *x1)
 {
     char *point;
