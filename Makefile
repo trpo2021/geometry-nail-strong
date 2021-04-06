@@ -1,4 +1,4 @@
-geometry: main.o input.o calculate.o
+geometry: main.o input.o calculate.o translation_universal.o
 	gcc main.o input.o calculate.o translation_universal.o -lm -o geometry.exe
 
 main.o: main.c
