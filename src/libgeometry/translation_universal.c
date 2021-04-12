@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 void translation_universal(char *UKAZATEL, double *x1)
 {
     char *point;
