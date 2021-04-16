@@ -1,8 +1,8 @@
+#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 bool finding_comma(char* UKAZATEL)
 {
     int flag = 0;
