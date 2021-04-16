@@ -1,1 +1,7 @@
-*.o*.app*.exe*.lib * ~*#*.out*.d
+*.o
+*.app
+*.exe
+*.lib
+*~*#
+*.out
+*.d
