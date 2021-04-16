@@ -22,6 +22,7 @@ int main()
     if (correct(Circle, str, Q) == true) {
         UKAZATEL = UKAZATEL2;
         printf("approved\n");
+        correct(Circle, UKAZATEL, Q);
     }
     translation_universal(UKAZATEL, Z);
     calculation(Z);
