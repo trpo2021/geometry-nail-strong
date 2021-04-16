@@ -1,6 +1,6 @@
-#include "../libgeometry/lib_calculate.h"
-#include "../libgeometry/lib_input.h"
-#include "../libgeometry/lib_translation_universal.h"
+#include <libgeometry/lib_calculate.h>
+#include <libgeometry/lib_input.h>
+#include <libgeometry/lib_translation_universal.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
