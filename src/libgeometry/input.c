@@ -6,9 +6,9 @@
 bool finding_comma(char*);
 bool finding_bracket(char*);
 bool finding_bracket2(char*);
-bool correct(char*, char*, int);
+bool correct(char*, char*);
 
-bool correct(char* Circle, char* UKAZATEL, int Q)
+bool correct(char* Circle, char* UKAZATEL)
 {
     int w = 6, check = 0;
     if (strncmp(Circle, UKAZATEL, w) == 0) {

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 bool finding_comma(char* UKAZATEL)
 {
     int flag = 0;
@@ -44,7 +45,7 @@ bool finding_bracket2(char* UKAZATEL)
         return false;
     return true;
 }
-bool correct(char* Circle, char* UKAZATEL, int Z)
+bool correct(char* Circle, char* UKAZATEL)
 {
     int w = 6, check = 0;
     if (strncmp(Circle, UKAZATEL, w) == 0) {
@@ -85,7 +86,7 @@ void translation_universal(char* UKAZATEL, double* x1)
         }
     }
 }
-void calculation(double* Z)
+/*void calculation(double* Z)
 {
     float pi = 3.1415;
     float S;
@@ -94,8 +95,8 @@ void calculation(double* Z)
     S = pi * Z[2] * Z[2];
     printf("P = %f\n", P);
     printf("S = %f\n", S);
-}
-int main()
+}*/
+/*int main()
 {
     int Q = 228;
     double Z[339];
@@ -108,7 +109,7 @@ int main()
         while (isalpha(*UKAZATEL2) != 0)
             UKAZATEL2++;
     }
-    if (correct(Circle, str, Q) == true) {
+    if (correct(Circle, str) == true) {
         UKAZATEL = UKAZATEL2;
         printf("approved\n");
     }
@@ -116,4 +117,4 @@ int main()
     calculation(Z);
     system("pause");
     return 0;
-}
+}*/
