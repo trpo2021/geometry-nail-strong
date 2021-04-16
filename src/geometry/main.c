@@ -1,10 +1,11 @@
-#include "lib_calculate.h"
-#include "lib_input.h"
-#include "lib_translation_universal.h"
+#include "../libgeometry/lib_calculate.h"
+#include "../libgeometry/lib_input.h"
+#include "../libgeometry/lib_translation_universal.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 int main()
 {
     int Q = 228;
@@ -22,7 +23,6 @@ int main()
         UKAZATEL = UKAZATEL2;
         printf("approved\n");
     }
-    correct(Circle, UKAZATEL, Q);
     translation_universal(UKAZATEL, Z);
     calculation(Z);
     system("pause");
