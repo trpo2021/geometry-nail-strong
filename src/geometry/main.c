@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <libgeometry/lib_calculate.h>
 #include <libgeometry/lib_input.h>
 #include <libgeometry/lib_translation_universal.h>
@@ -5,7 +6,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 int main()
 {
     int Q = 228;

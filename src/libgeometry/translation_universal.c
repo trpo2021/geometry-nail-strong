@@ -1,12 +1,12 @@
 #include "lib_translation_universal.h"
+#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
-void translation_universal(char *UKAZATEL, double *x1)
+void translation_universal(char* UKAZATEL, double* x1)
 {
-    char *point;
+    char* point;
     double c;
     int i = 0;
     while (isdigit(*UKAZATEL) == 0) {
