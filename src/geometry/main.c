@@ -20,10 +20,10 @@ int main()
         while (isalpha(*UKAZATEL2) != 0)
             UKAZATEL2++;
     }
-    if (correct(Circle, str, Q) == true) {
+    if (correct(Circle, str) == true) {
         UKAZATEL = UKAZATEL2;
         printf("approved\n");
-        correct(Circle, UKAZATEL, Q);
+        correct(Circle, UKAZATEL);
     }
     translation_universal(UKAZATEL, Z);
     calculation(Z);
