@@ -3,11 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-bool finding_comma(char*);
-bool finding_bracket(char*);
-bool finding_bracket2(char*);
-bool correct(char*, char*);
-
 bool correct(char* Circle, char* UKAZATEL)
 {
     int w = 6, check = 0;
