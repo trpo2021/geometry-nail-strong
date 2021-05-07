@@ -14,9 +14,7 @@ bool correct(char* Circle, char* UKAZATEL)
             check++;
         if (finding_bracket2(UKAZATEL) == true)
             check++;
-    } else {
-        printf("error: Check the spelling of the command\n");
-    }
+}
     if (check == 4)
         return true;
     if (check != 4)
