@@ -1,45 +1,44 @@
-APP_NAME = geometry
-LIB_NAME = libgeometry
+LIB = src/libgeometry/
+GEOM = src/geometry/
+TEST = src/test/
+FL1 = -I src -c
+FL2 = -lm -o
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-CPPFLAGS = -I src -MP -MMD
-LDFLAGS =
-LDLIBS =
 
-BIN_DIR = bin
-OBJ_DIR = obj
-SRC_DIR = src
+all: prog.exe test
 
-APP_PATH = $(BIN_DIR)/$(APP_NAME)
-LIB_PATH = $(OBJ_DIR)/$(SRC_DIR)/$(LIB_NAME)/$(LIB_NAME).a
+main: prog.exe
+test: ar_t
+	$(CC) tmain.o test.o input.o $(FL2) test.exe
 
-SRC_EXT = c
+ar_t: tmain.o test.o input.o
+	ar rc test.a tmain.o test.o input.o
 
-APP_SOURCES = $(shell find $(SRC_DIR)/$(APP_NAME) -name '*.$(SRC_EXT)')
-APP_OBJECTS = $(APP_SOURCES:$(SRC_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/$(SRC_DIR)/%.o)
+prog.exe: ar_p
+	$(CC) prog.a $(FL2) geometry.exe
 
-LIB_SOURCES = $(shell find $(SRC_DIR)/$(LIB_NAME) -name '*.$(SRC_EXT)')
-LIB_OBJECTS = $(LIB_SOURCES:$(SRC_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/$(SRC_DIR)/%.o)
+ar_p: main.o calculate.o geometry.o input.o
+	ar rc prog.a main.o calculate.o geometry.o input.o
 
-DEPS = $(APP_OBJECTS:.o=.d) $(LIB_OBJECTS:.o=.d)
+tmain.o:
+	$(CC) $(FL1) $(TEST)tmain.c
 
-.PHONY: all
-all: $(APP_PATH)
+test.o:
+	$(CC) $(FL1) $(TEST)test.c
 
--include $(DEPS)
+input.o:
+	$(CC) $(FL1) $(LIB)input.c
 
-$(APP_PATH): $(APP_OBJECTS) $(LIB_PATH)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -lm -o $@ $(LDFLAGS) $(LDLIBS)
+geometry.o:
+	$(CC) $(FL1) $(LIB)geometry.c
 
-$(LIB_PATH): $(LIB_OBJECTS)
-	ar rcs $@ $^
+calculate.o:
+	$(CC) $(FL1) $(LIB)calculate.c
 
-$(OBJ_DIR)/%.o: %.c
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -lm -o $@
+main.o:
+	$(CC) $(FL1) $(GEOM)main.c
 
-.PHONY: clean
 clean:
-	$(RM) $(APP_PATH) $(LIB_PATH)
-		find $(OBJ_DIR) -name '*.o' -exec $(RM) '{}' \;
-		find $(OBJ_DIR) -name '*.d' -exec $(RM) '{}' \;
-		find -name '*.exe' -exec $(RM) '{}' \;
+	rm *.o
+	rm *.a
+	rm *.exe
