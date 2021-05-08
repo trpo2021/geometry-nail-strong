@@ -14,7 +14,7 @@ bool correct(char* Circle, char* UKAZATEL)
             check++;
         if (finding_bracket2(UKAZATEL) == true)
             check++;
-}
+    }
     if (check == 4)
         return true;
     if (check != 4)

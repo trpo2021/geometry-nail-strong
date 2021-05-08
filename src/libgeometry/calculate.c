@@ -22,7 +22,7 @@ void circle(double* C1, double* C2)
     double y2 = C2[0];
     double radius1 = C1[2];
     double radius2 = C2[2];
-    double distance = sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1));
+    double distance = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
     if (radius1 - radius2 < distance && distance < radius1 + radius2)
         printf(" figure intersect \n");
     else
