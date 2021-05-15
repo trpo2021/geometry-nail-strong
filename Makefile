@@ -1,44 +1,58 @@
-LIB = src/libgeometry/
-GEOM = src/geometry/
-TEST = src/test/
-FL1 = -I src -c
-FL2 = -lm -o
-CC = gcc
+APP_NAME = geometry
+LIB_NAME = libgeometry
 
-all: prog.exe test
+CFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -I src -MP -MMD
+LDFLAGS =
+LDLIBS =
+CC= gcc
 
-main: prog.exe
-test: ar_t
-	$(CC) tmain.o test.o input.o $(FL2) test.exe
+APP_TEST_NAME = test
+BIN_DIR = bin
+OBJ_DIR = obj
+SRC_DIR = src
+TEST_DIR = test
 
-ar_t: tmain.o test.o input.o
-	ar rc test.a tmain.o test.o input.o
+APP_PATH = $(BIN_DIR)/$(APP_NAME)
+LIB_PATH = $(OBJ_DIR)/$(SRC_DIR)/$(LIB_NAME)/$(LIB_NAME).a
+APP_TEST_PATH = $(BIN_DIR)/$(APP_TEST_NAME)
 
-prog.exe: ar_p
-	$(CC) prog.a $(FL2) geometry.exe
+SRC_EXT = c
 
-ar_p: main.o calculate.o geometry.o input.o
-	ar rc prog.a main.o calculate.o geometry.o input.o
+APP_SOURCES = $(shell find $(SRC_DIR)/$(APP_NAME) -name '*.$(SRC_EXT)')
+APP_OBJECTS = $(APP_SOURCES:$(SRC_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/$(SRC_DIR)/%.o)
+APP_TEST_SOURCES = $(shell find $(SRC_DIR)/$(TEST_DIR) -name '*.$(SRC_EXT)')
+APP_TEST_OBJECTS = $(APP_TEST_SOURCES:$(SRC_DIR)/(TEST_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/$(TEST_DIR)/%.o)
 
-tmain.o:
-	$(CC) $(FL1) $(TEST)tmain.c
+LIB_SOURCES = $(shell find $(SRC_DIR)/$(LIB_NAME) -name '*.$(SRC_EXT)')
+LIB_OBJECTS = $(LIB_SOURCES:$(SRC_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/$(SRC_DIR)/%.o)
 
-test.o:
-	$(CC) $(FL1) $(TEST)test.c
+DEPS = $(APP_OBJECTS:.o=.d) $(LIB_OBJECTS:.o=.d)
+TEST_DEPS = $(APP_TEST_OBJECTS:.o=.d) $(LIB_OBJECTS:.o=.d)
+.PHONY: all
+all: $(APP_PATH)
 
-input.o:
-	$(CC) $(FL1) $(LIB)input.c
+-include $(DEPS)
 
-geometry.o:
-	$(CC) $(FL1) $(LIB)geometry.c
+$(APP_PATH): $(APP_OBJECTS) $(LIB_PATH)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
 
-calculate.o:
-	$(CC) $(FL1) $(LIB)calculate.c
+$(LIB_PATH): $(LIB_OBJECTS)
+	ar rcs $@ $^
 
-main.o:
-	$(CC) $(FL1) $(GEOM)main.c
+$(OBJ_DIR)/%.o: %.c
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+.PHONY: test
+test: $(APP_TEST_PATH)
 
+$(APP_TEST_PATH): $(APP_TEST_OBJECTS) $(LIB_PATH)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
+
+$(OBJ_DIR)/$(TEST_DIR)/%.o: $(TEST_DIR)/%.c
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+
+.PHONY: clean
 clean:
-	rm *.o
-	rm *.a
-	rm *.exe
+	$(RM) $(APP_PATH) $(LIB_PATH) $(APP_TEST_PATH)
+	find $(OBJ_DIR) -name '*.o' -exec $(RM) '{}' \;
+	find $(OBJ_DIR) -name '*.d' -exec $(RM) '{}' \;
