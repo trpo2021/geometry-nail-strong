@@ -2,7 +2,7 @@ APP_NAME = geometry
 LIB_NAME = libgeometry
 
 CFLAGS = -Wall -Wextra -Werror
-CPPFLAGS = -I src -MP -MMD
+CPPFLAGS = -lm -I src -MP -MMD
 LDFLAGS =
 LDLIBS =
 CC= gcc
