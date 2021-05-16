@@ -14,7 +14,7 @@ void calculation(double* Z)
     printf("P = %f\n", P);
     printf("S = %f\n", S);
 }
-void circle(double* C1, double* C2)
+void circle_split(double* C1, double* C2)
 {
     double distance;
     double x1 = C1[0];

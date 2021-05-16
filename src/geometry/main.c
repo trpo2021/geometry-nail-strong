@@ -43,7 +43,7 @@ int main()
     }
     translation_universal(KRUG1, P);
     calculation(P);
-    circle(Z, P);
+    circle_split(Z, P);
     system("pause");
     return 0;
 }
