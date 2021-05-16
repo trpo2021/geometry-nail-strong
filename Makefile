@@ -7,7 +7,7 @@ LDFLAGS =
 LDLIBS =
 CC= gcc
 
-APP_TEST_NAME = tmain
+APP_TEST_NAME = test
 BIN_DIR = bin
 OBJ_DIR = obj
 SRC_DIR = src
