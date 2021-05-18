@@ -15,5 +15,8 @@ jobs:
       - name: clean check
         run: make clean
 
+      - name: test application
+        run: make test && ./bin/test
+
       - name: Build application
         run: make
