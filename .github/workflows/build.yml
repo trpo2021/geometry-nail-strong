@@ -16,7 +16,7 @@ jobs:
         run: make clean
 
       - name: test application
-        run: make test && ./bin/test
+        run: make test && ./bin/tmain
 
       - name: Build application
         run: make
